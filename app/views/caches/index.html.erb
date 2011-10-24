@@ -1,0 +1,33 @@
+<h1>Listing caches</h1>
+
+<table>
+  <tr>
+    <th>Link</th>
+    <th>Html</th>
+    <th>Content</th>
+    <th>Error type</th>
+    <th>Error msg</th>
+    <th>Error msg2</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @caches.each do |cach| %>
+  <tr>
+    <td><%= cach.link %></td>
+    <td><%= cach.html %></td>
+    <td><%= cach.content %></td>
+    <td><%= cach.error_type %></td>
+    <td><%= cach.error_msg %></td>
+    <td><%= cach.error_msg2 %></td>
+    <td><%= link_to 'Show', cach %></td>
+    <td><%= link_to 'Edit', edit_cach_path(cach) %></td>
+    <td><%= link_to 'Destroy', cach, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Cache', new_cach_path %>

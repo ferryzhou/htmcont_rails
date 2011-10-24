@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  link: MyString
+  html: MyText
+  content: MyText
+  error_type: 1
+  error_msg: MyText
+  error_msg2: MyText
+
+two:
+  link: MyString
+  html: MyText
+  content: MyText
+  error_type: 1
+  error_msg: MyText
+  error_msg2: MyText

@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Link:</b>
+  <%= @cach.link %>
+</p>
+
+<p>
+  <b>Html:</b>
+  <%= @cach.html %>
+</p>
+
+<p>
+  <b>Content:</b>
+  <%= @cach.content %>
+</p>
+
+<p>
+  <b>Error type:</b>
+  <%= @cach.error_type %>
+</p>
+
+<p>
+  <b>Error msg:</b>
+  <%= @cach.error_msg %>
+</p>
+
+<p>
+  <b>Error msg2:</b>
+  <%= @cach.error_msg2 %>
+</p>
+
+
+<%= link_to 'Edit', edit_cach_path(@cach) %> |
+<%= link_to 'Back', caches_path %>
