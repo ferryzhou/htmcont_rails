@@ -1,3 +1,8 @@
+require 'cgi'
+require 'open-uri'
+require 'readability.rb'
+require 'iconv'
+
 class ContsController < ApplicationController
   # GET /conts
   # GET /conts.json
@@ -97,18 +102,18 @@ class ContsController < ApplicationController
         html = open(link).read
 	  rescue => e
 	    error_type = 1 #HTML error
-		error_msg = e.backtrace
+		error_msg = link + '---\r\n' + e.message.to_s
 	  end
 	  
 	  if error_type == 0
 	    begin  
-          doc = Readability::Document.new(source, :debug=>true)#; p doc.html.encoding
+          doc = Readability::Document.new(html, :debug=>true)#; p doc.html.encoding
           encoding = doc.html.encoding
           encoding = "GBK" if encoding.nil?
-          content = Iconv.iconv('utf-8', encoding, doc.content).join
-        rescue
+          content = doc.content#Iconv.iconv('utf-8', encoding, doc.content).join
+        rescue => e
 		  error_type = 2 # READABILITY ERROR
-		  error_msg = e.backtrace
+		  error_msg = e.message.to_s
 		end
 	  end
 
