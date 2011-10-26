@@ -1,0 +1,31 @@
+<h1>Listing conts</h1>
+
+<table>
+  <tr>
+    <th>Link</th>
+    <th>Html</th>
+    <th>Content</th>
+    <th>Error type</th>
+    <th>Error msg</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @conts.each do |cont| %>
+  <tr>
+    <td><%= cont.link %></td>
+    <td><%= cont.html %></td>
+    <td><%= cont.content %></td>
+    <td><%= cont.error_type %></td>
+    <td><%= cont.error_msg %></td>
+    <td><%= link_to 'Show', cont %></td>
+    <td><%= link_to 'Edit', edit_cont_path(cont) %></td>
+    <td><%= link_to 'Destroy', cont, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Cont', new_cont_path %>

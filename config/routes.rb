@@ -1,11 +1,12 @@
 HtmcontRails::Application.routes.draw do
 
-  resources :caches do
+  resources :conts do
     collection do
-	  get 'testadd'
-	  get 'extract'
+	  get 'g'
 	end
   end
+
+  resources :caches
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

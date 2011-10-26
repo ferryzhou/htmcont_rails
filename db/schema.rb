@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111024011230) do
+ActiveRecord::Schema.define(:version => 20111025021442) do
 
   create_table "caches", :force => true do |t|
     t.string   "link"
@@ -20,6 +20,16 @@ ActiveRecord::Schema.define(:version => 20111024011230) do
     t.integer  "error_type"
     t.text     "error_msg"
     t.text     "error_msg2"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "conts", :force => true do |t|
+    t.string   "link"
+    t.text     "html"
+    t.text     "content"
+    t.integer  "error_type"
+    t.text     "error_msg"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

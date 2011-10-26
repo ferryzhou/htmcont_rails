@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Link:</b>
+  <%= @cont.link %>
+</p>
+
+<p>
+  <b>Html:</b>
+  <%= @cont.html %>
+</p>
+
+<p>
+  <b>Content:</b>
+  <%= @cont.content %>
+</p>
+
+<p>
+  <b>Error type:</b>
+  <%= @cont.error_type %>
+</p>
+
+<p>
+  <b>Error msg:</b>
+  <%= @cont.error_msg %>
+</p>
+
+
+<%= link_to 'Edit', edit_cont_path(@cont) %> |
+<%= link_to 'Back', conts_path %>

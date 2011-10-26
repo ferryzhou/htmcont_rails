@@ -85,48 +85,4 @@ class CachesController < ApplicationController
     end
   end
   
-  # if the link already exist, return the content
-  # else add a new
-  def cont
-    link = params[:link]
-    @cach = Cache.where(:link => link)
-	if @cach.nil?
-	  error_type = 0 #success
-	  content = ''
-	  html = ''
-	  error_msg = ''
-	  begin
-        html = open(link).read
-	  rescue => e
-	    error_type = 1 #HTML error
-		error_msg = e.backtrace
-	  end
-	  
-	  if error_type == 0
-	    begin  
-          doc = Readability::Document.new(source, :debug=>true)#; p doc.html.encoding
-          encoding = doc.html.encoding
-          encoding = "GBK" if encoding.nil?
-          content = Iconv.iconv('utf-8', encoding, doc.content).join
-        rescue
-		  error_type = 2 # READABILITY ERROR
-		  error_msg = e.backtrace
-		end
-	  end
-
-      @cach = Cache.new(
-	    :link => link,
-	    :html => html,
-	    :content => content,
-	    :error_type => error_type,
-	    :error_msg => error_msg
-	  )
-      @cach.save
-	end
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @cach }
-    end
-  end
 end
