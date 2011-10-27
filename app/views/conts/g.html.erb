@@ -5,21 +5,7 @@
   <%= @cont.link %>
 </p>
 
-<p>
-  <b>Content:</b>
-  <%= @cont.content %>
-</p>
-
-<p>
-  <b>Error type:</b>
-  <%= @cont.error_type %>
-</p>
-
-<p>
-  <b>Error msg:</b>
-  <%= @cont.error_msg %>
-</p>
-
+<%= @cont.content.html_safe %>
 
 <%= link_to 'Edit', edit_cont_path(@cont) %> |
 <%= link_to 'Back', conts_path %>

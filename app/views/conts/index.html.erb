@@ -3,8 +3,6 @@
 <table>
   <tr>
     <th>Link</th>
-    <th>Html</th>
-    <th>Content</th>
     <th>Error type</th>
     <th>Error msg</th>
     <th></th>
@@ -15,8 +13,6 @@
 <% @conts.each do |cont| %>
   <tr>
     <td><%= cont.link %></td>
-    <td><%= cont.html %></td>
-    <td><%= cont.content %></td>
     <td><%= cont.error_type %></td>
     <td><%= cont.error_msg %></td>
     <td><%= link_to 'Show', cont %></td>
