@@ -99,7 +99,13 @@ class ContsController < ApplicationController
 	  html = ''
 	  error_msg = ''
 	  begin
-        html = open(link).read
+        a = open(link)
+        text = a.read
+        cs = a.charset
+        cs = 'GBK' if cs.nil?
+        utf8_text = text.force_encoding(a.charset).encode('UTF-8')
+        utf8_text = utf8_text.sub(a.charset, 'UTF-8')
+        html = utf8_text
 	  rescue => e
 	    error_type = 1 #HTML error
 		error_msg = link + '---\r\n' + e.message.to_s
@@ -107,10 +113,8 @@ class ContsController < ApplicationController
 	  
 	  if error_type == 0
 	    begin  
-          doc = Readability::Document.new(html, :debug=>true)#; p doc.html.encoding
-          encoding = doc.html.encoding
-          encoding = "GBK" if encoding.nil?
-          content = doc.content#Iconv.iconv('utf-8', encoding, doc.content).join
+          doc = Readability::Document.new(html, :debug=>true)
+          content = doc.content
         rescue => e
 		  error_type = 2 # READABILITY ERROR
 		  error_msg = e.message.to_s
