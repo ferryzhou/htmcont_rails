@@ -64,10 +64,10 @@ module Readability
           return cleaned_article
         end
 
-        make_html
-        content
+        make_html; p "make html"
+        content; p "content"
       else
-        cleaned_article
+        cleaned_article; p "cleaned article" 
       end
     end
 
