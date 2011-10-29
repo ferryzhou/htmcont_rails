@@ -1,7 +1,7 @@
 require 'cgi'
 require 'open-uri'
 require 'readability.rb'
-require 'iconv'
+#require 'iconv'
 
 class ContsController < ApplicationController
   # GET /conts
@@ -86,6 +86,33 @@ class ContsController < ApplicationController
     end
   end
   
+  def get_charset(text)
+  charset_str = 'charset='
+  ind = text.index(charset_str)
+  if ind.nil?; return 'iso-8859-1'; end
+  start = ind + charset_str.length#; p start.to_s
+  ind2 = text.index('"', start)#; p ind2.to_s
+  if ind2 == start #start with "
+    ind3 = text.index('"', start+1);
+    return text[(ind2+1)...ind3]
+  else
+    return text[start...ind2]
+  end
+  end
+
+  def uncompress(string, encoding)
+      case encoding
+        when 'gzip'
+          i=Zlib::GzipReader.new(StringIO.new(string))
+          content=i.read
+        when 'deflate'
+          i=Zlib::Inflate.new
+          content=i.inflate(string)
+        else
+          raise "Unknown encoding - #{encoding}"
+      end
+  end
+
   # if the link already exist, return the content
   # else add a new
   def g
@@ -99,25 +126,40 @@ class ContsController < ApplicationController
 	  html = ''
 	  error_msg = ''
 	  begin
-        a = open(link)
-        text = a.read
-        cs = a.charset
-        cs = 'GBK' if cs.nil?
-        utf8_text = text.force_encoding(a.charset).encode('UTF-8')
-        utf8_text = utf8_text.sub(a.charset, 'UTF-8')
-        html = utf8_text
+        a = open(link); p "header charset: #{a.charset}"
+        text = a.read; p "text encoding: #{text.encoding.to_s}"
+        cs = get_charset(text); p "charset: #{cs}"
+        #utf8_text = text.force_encoding(cs).encode('UTF-8')
+        #utf8_text = utf8_text.sub(cs, 'UTF-8')
+        #html = utf8_text
+		enc = a.meta['content-encoding']
+		if enc == 'gzip' || enc == 'inflate'
+		  text = uncompress(text, enc)
+		end
+		html = text
+		if "iso-8859-1".casecmp(cs) == 0 || "utf-8".casecmp(text.encoding.to_s) !=0
+		  if "utf-8".casecmp(cs) != 0
+		    p 'wrong charset, change'
+		    html = text.force_encoding('GBK').encode('UTF-8')
+		  end
+		end
 	  rescue => e
 	    error_type = 1 #HTML error
-		error_msg = link + '---\r\n' + e.message.to_s
+		error_msg = e.message.to_s
+		p e.message
+		p e.backtrace.join("\r\n")
 	  end
 	  
 	  if error_type == 0
 	    begin  
-          doc = Readability::Document.new(html, :debug=>true)
+#          doc = Readability::Document.new(html, :debug=>true)
+          doc = Readability::Document.new(html)
           content = doc.content
         rescue => e
 		  error_type = 2 # READABILITY ERROR
 		  error_msg = e.message.to_s
+		  p e.message
+		  p e.backtrace
 		end
 	  end
 
