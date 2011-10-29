@@ -143,6 +143,7 @@ class ContsController < ApplicationController
 		    html = text.force_encoding('GBK').encode('UTF-8')
 		  end
 		end
+		html = html.force_encoding('utf-8')
 	  rescue => e
 	    error_type = 1 #HTML error
 		error_msg = e.message.to_s
