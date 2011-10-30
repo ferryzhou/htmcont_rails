@@ -87,17 +87,17 @@ class ContsController < ApplicationController
   end
   
   def get_charset(text)
-  charset_str = 'charset='
-  ind = text.index(charset_str)
-  if ind.nil?; return 'iso-8859-1'; end
-  start = ind + charset_str.length#; p start.to_s
-  ind2 = text.index('"', start)#; p ind2.to_s
-  if ind2 == start #start with "
-    ind3 = text.index('"', start+1);
-    return text[(ind2+1)...ind3]
-  else
-    return text[start...ind2]
-  end
+    charset_str = 'charset='
+    ind = text.index(charset_str); p "find charset=" + ind.to_s
+    if ind.nil?; return 'iso-8859-1'; end
+    start = ind + charset_str.length#; p start.to_s
+    ind2 = text.index('"', start)#; p ind2.to_s
+    if ind2 == start #start with "
+      ind3 = text.index('"', start+1);
+      return text[(ind2+1)...ind3]
+    else
+      return text[start...ind2]
+    end
   end
 
   def uncompress(string, encoding)
@@ -125,20 +125,21 @@ class ContsController < ApplicationController
 	  content = ''
 	  html = ''
 	  error_msg = ''
+	  title = ''
 	  begin
         a = open(link); p "header charset: #{a.charset}"
         text = a.read; p "text encoding: #{text.encoding.to_s}"
-        cs = get_charset(text); p "charset: #{cs}"
-        #utf8_text = text.force_encoding(cs).encode('UTF-8')
-        #utf8_text = utf8_text.sub(cs, 'UTF-8')
-        #html = utf8_text
 		enc = a.meta['content-encoding']
 		if enc == 'gzip' || enc == 'inflate'
 		  text = uncompress(text, enc)
 		end
+        cs = get_charset(text); p "charset: #{cs}"
+        #utf8_text = text.force_encoding(cs).encode('UTF-8')
+        #utf8_text = utf8_text.sub(cs, 'UTF-8')
+        #html = utf8_text
 		html = text
 		if "iso-8859-1".casecmp(cs) == 0 || "utf-8".casecmp(text.encoding.to_s) !=0
-		  if "utf-8".casecmp(cs) != 0
+		  if "utf-8".casecmp(cs) != 0 && "utf-8".casecmp(text.encoding.to_s) !=0
 		    p 'wrong charset, change'
 		    html = text.force_encoding('GBK').encode('UTF-8')
 		  end
@@ -156,6 +157,7 @@ class ContsController < ApplicationController
 #          doc = Readability::Document.new(html, :debug=>true)
           doc = Readability::Document.new(html)
           content = doc.content
+		  title = doc.html.title
         rescue => e
 		  error_type = 2 # READABILITY ERROR
 		  error_msg = e.message.to_s
@@ -168,6 +170,7 @@ class ContsController < ApplicationController
 	    :link => link,
 	    :html => html,
 	    :content => content,
+		:title => title,
 	    :error_type => error_type,
 	    :error_msg => error_msg
 	  )
