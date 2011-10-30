@@ -1,0 +1,6 @@
+details:
+1. truncate title
+2. line spacing
+
+readability failed sites:
+laoyaoba
