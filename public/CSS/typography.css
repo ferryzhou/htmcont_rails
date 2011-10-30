@@ -1,5 +1,5 @@
 
-body { font:1em/1.625em "lucida grande","lucida sans unicode", sans-serif; background-color:#FFFEF0;  
+body { font:1em/1.625em "lucida grande","lucida sans unicode", sans-serif; background-color:#fafafa;  
 font-size-adjust:none;
 font-style:normal;
 font-variant:normal;
@@ -69,4 +69,4 @@ hr { margin-bottom:1.625em; }
 .note { font-family:Georgia, "Times New Roman", Times, serif; font-style:italic; font-size:0.9em; margin:0.1em; color:#333; } 
 .mono { font-family:"Courier New", Courier, monospace; }
 
-.main {  margin:0 auto;  width:700px;   }
+.main {  margin:0 auto;  width:600px;   }

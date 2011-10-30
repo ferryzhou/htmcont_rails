@@ -1,8 +1,7 @@
 todo:
 1. truncate title
-3. database doesn't have title column? or the title doesn't saved to database?
-5. speed optimization
-6. multiple pages
+2. speed optimization
+3. multiple pages
 
 readability failed sites:
 some laoyaoba pages
