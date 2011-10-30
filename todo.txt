@@ -1,6 +1,10 @@
-details:
+todo:
 1. truncate title
 2. line spacing
+3. database doesn't have title column? or the title doesn't saved to database?
+4. multiple html header in g
+5. speed optimization
+6. multiple pages
 
 readability failed sites:
-laoyaoba
+some laoyaoba pages
