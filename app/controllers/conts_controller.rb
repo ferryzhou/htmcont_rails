@@ -132,6 +132,9 @@ class ContsController < ApplicationController
 		enc = a.meta['content-encoding']
 		if enc == 'gzip' || enc == 'inflate'
 		  text = uncompress(text, enc)
+          cs = get_charset(text); p "ziped charset: #{cs}"
+		  text = text.force_encoding(cs).encode('UTF-8')
+          text = text.sub(cs, 'UTF-8')
 		end
         cs = get_charset(text); p "charset: #{cs}"
         #utf8_text = text.force_encoding(cs).encode('UTF-8')
@@ -145,6 +148,7 @@ class ContsController < ApplicationController
 		  end
 		end
 		html = html.force_encoding('utf-8')
+        html = html.sub(cs, 'UTF-8')
 	  rescue => e
 	    error_type = 1 #HTML error
 		error_msg = e.message.to_s
