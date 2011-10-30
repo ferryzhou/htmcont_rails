@@ -8,3 +8,4 @@ todo:
 
 readability failed sites:
 some laoyaoba pages
+http://sharp-cloud-6961.heroku.com/conts/g?link=http://sc.stock.cnfol.com/111028/123,1764,11021395,00.shtml
