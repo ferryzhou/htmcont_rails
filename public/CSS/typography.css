@@ -70,3 +70,4 @@ hr { margin-bottom:1.625em; }
 .mono { font-family:"Courier New", Courier, monospace; }
 
 .main {  margin:0 auto;  width:600px;   }
+.title { font-weight: bold; font-size: 20px; text-align:center; font-family:"ms song","Microsoft Yahei",SimHei,Verdana,Helvetica,SimSun,Arial,"Arial Unicode MS",MingLiu,PMingLiu,"MS Gothic",sans-serief; line-height: 1.5em; margin-top: 20px; margin-bottom: 20px}

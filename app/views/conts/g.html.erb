@@ -1,14 +1,14 @@
 <div class="main">
-<h2><%= @cont.title %></h2>
+<div class="title"><%= @cont.title %></div>
 
 <p id="notice"><%= notice %></p>
+
+<%= @cont.content.html_safe %>
 
 <p>
   <b>Link:</b>
   <%= @cont.link %>
 </p>
-
-<%= @cont.content.html_safe %>
 
 <%= link_to 'Edit', edit_cont_path(@cont) %> |
 <%= link_to 'Back', conts_path %>
