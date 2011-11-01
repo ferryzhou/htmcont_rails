@@ -113,6 +113,11 @@ class ContsController < ApplicationController
       end
   end
 
+  def trim_title(raw_title)
+    ind = raw_title.index(/[_-]/)
+    ind.nil? ? raw_title : trim(raw_title[0...ind])
+  end
+
   # if the link already exist, return the content
   # else add a new
   def g
@@ -165,7 +170,7 @@ class ContsController < ApplicationController
 #          doc = Readability::Document.new(html, :debug=>true)
           doc = Readability::Document.new(html)
           content = doc.content
-		  title = doc.html.title
+		  title = trim_title(doc.html.title)
         rescue => e
 		  error_type = 2 # READABILITY ERROR
 		  error_msg = e.message.to_s
