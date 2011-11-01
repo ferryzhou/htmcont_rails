@@ -113,6 +113,8 @@ class ContsController < ApplicationController
       end
   end
 
+  def trim(str); str.strip! || str; end
+
   def trim_title(raw_title)
     ind = raw_title.index(/[_-]/)
     ind.nil? ? raw_title : trim(raw_title[0...ind])
