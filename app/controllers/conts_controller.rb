@@ -126,6 +126,7 @@ class ContsController < ApplicationController
 	  html = ''
 	  error_msg = ''
 	  title = ''
+	  st = Time.now
 	  begin
         a = open(link); p "header charset: #{a.charset}"
         text = a.read; p "text encoding: #{text.encoding.to_s}"
@@ -155,7 +156,9 @@ class ContsController < ApplicationController
 		p e.message
 		p e.backtrace.join("\r\n")
 	  end
-	  
+	  p "get html time: #{Time.now - st}"
+
+      st = Time.now	  
 	  if error_type == 0
 	    begin  
 #          doc = Readability::Document.new(html, :debug=>true)
@@ -169,6 +172,7 @@ class ContsController < ApplicationController
 		  p e.backtrace
 		end
 	  end
+	  p "get readability time: #{Time.now - st}"
 
       @cont = Cont.new(
 	    :link => link,
