@@ -137,7 +137,7 @@ class ContsController < ApplicationController
 	  begin
         a = open(link); p "header charset: #{a.charset}"
         text = a.read; p "text encoding: #{text.encoding.to_s}"
-	    p "get raw html time: #{Time.now - st}"
+	    #p "get raw html time: #{Time.now - st}"
 		enc = a.meta['content-encoding']
 		if enc == 'gzip' || enc == 'inflate'
 		  text = uncompress(text, enc)
