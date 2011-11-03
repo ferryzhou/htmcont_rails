@@ -113,11 +113,11 @@ class ContsController < ApplicationController
       end
   end
 
-  def trim(str); str.strip! || str; end
+  def trim_str(str); str.strip! || str; end
 
   def trim_title(raw_title)
     ind = raw_title.index(/[_-]/)
-    ind.nil? ? raw_title : trim(raw_title[0...ind])
+    ind.nil? ? raw_title : trim_str(raw_title[0...ind])
   end
 
   # if the link already exist, return the content
@@ -146,9 +146,6 @@ class ContsController < ApplicationController
           text = text.sub(cs, 'UTF-8')
 		end
         cs = get_charset(text); p "charset: #{cs}"
-        #utf8_text = text.force_encoding(cs).encode('UTF-8')
-        #utf8_text = utf8_text.sub(cs, 'UTF-8')
-        #html = utf8_text
 		html = text
 		if "iso-8859-1".casecmp(cs) == 0 || "utf-8".casecmp(text.encoding.to_s) !=0
 		  if "utf-8".casecmp(cs) != 0 && "utf-8".casecmp(text.encoding.to_s) !=0

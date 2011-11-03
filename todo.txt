@@ -1,11 +1,11 @@
 todo:
-1. truncate title
-2. speed optimization
-3. multiple pages
-4. clean iframe content
+1. speed optimization
+2. multiple pages
+3. clean iframe content
 
 readability failed sites:
 some laoyaoba pages
 http://sharp-cloud-6961.heroku.com/conts/g?link=http://sc.stock.cnfol.com/111028/123,1764,11021395,00.shtml
 http://b2b.netsun.com/detail--6007056.html
 http://blog.sina.com.cn/s/blog_470e3bbf0102dvfe.html, remove <span class='MASS67fb64cc3525'>
+http://info.ec.hc360.com/2011/11/011737523732.shtml
