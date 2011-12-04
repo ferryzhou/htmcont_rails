@@ -2,9 +2,8 @@
 
 <table>
   <tr>
-    <th>Link</th>
-    <th>Error type</th>
     <th>Title</th>
+    <th>Error type</th>
     <th></th>
     <th></th>
     <th></th>
@@ -12,9 +11,8 @@
 
 <% @conts.each do |cont| %>
   <tr>
-    <td><%= cont.link %></td>
+    <td><%= link_to cont.title, cont.link %></td>
     <td><%= cont.error_type %></td>
-    <td><%= cont.title %></td>
     <td><%= link_to 'Show', cont %></td>
     <td><%= link_to 'Edit', edit_cont_path(cont) %></td>
     <td><%= link_to 'Destroy', cont, confirm: 'Are you sure?', method: :delete %></td>
