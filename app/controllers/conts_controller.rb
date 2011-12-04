@@ -86,6 +86,7 @@ class ContsController < ApplicationController
     end
   end
   
+  #==================== processing start =================>
   def get_charset(text)
     charset_str = 'charset='
     ind = text.index(charset_str); p "find charset=" + ind.to_s
@@ -192,7 +193,7 @@ class ContsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @cach }
+      format.json { render json: @cont }
     end
   end
 end
