@@ -133,7 +133,7 @@ class ContsController < ApplicationController
 	  html = ''
 	  error_msg = ''
 	  title = ''
-	  st = Time.now
+	  #st = Time.now
 	  begin
         a = open(link); p "header charset: #{a.charset}"
         text = a.read; p "text encoding: #{text.encoding.to_s}"
@@ -159,9 +159,9 @@ class ContsController < ApplicationController
 	    error_type = 1 #HTML error
 		error_msg = e.message.to_s
 		p e.message
-		p e.backtrace.join("\r\n")
+		p e.backtrace
 	  end
-	  p "get html time: #{Time.now - st}"
+	  #p "get html time: #{Time.now - st}"
 
       st = Time.now	  
 	  if error_type == 0
