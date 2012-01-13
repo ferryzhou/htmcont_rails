@@ -1,5 +1,6 @@
 require 'rubygems'
 require 'nokogiri'
+require 'uri'
 
 module Readability
   class Document
@@ -26,6 +27,20 @@ module Readability
       @html = Nokogiri::HTML(@input)
     end
 
+	def make_absolute( href, root )
+	  puts "making absolute " + href
+	  URI.parse(root).merge(URI.parse(href)).to_s
+	end
+
+	def img_src_to_absolute_path(root)
+	  imgs = @html.css "img"
+	  imgs.each { |img| img['src'] = make_absolute(img['src'], root) }
+	end
+	
+	def title
+	  @html.title
+	end
+
     REGEXES = {
         :unlikelyCandidatesRe => /combx|comment|community|disqus|extra|foot|header|menu|remark|rss|shoutbox|sidebar|sponsor|ad-break|agegate|pagination|pager|popup/i,
         :okMaybeItsACandidateRe => /and|article|body|column|main|shadow/i,
@@ -44,6 +59,7 @@ module Readability
       @remove_unlikely_candidates = false if remove_unlikely_candidates == false
 
       @html.css("script, style").each { |i| i.remove }
+	  img_src_to_absolute_path(@page_url) if not @page_url.nil?
 
       remove_unlikely_candidates! if @remove_unlikely_candidates
       transform_misused_divs_into_paragraphs!
