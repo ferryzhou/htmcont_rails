@@ -7,7 +7,8 @@ class ContsController < ApplicationController
   # GET /conts
   # GET /conts.json
   def index
-    @conts = Cont.all
+    #@conts = Cont.all
+	  @conts = Cont.paginate(:page => params[:page])
 
     respond_to do |format|
       format.html # index.html.erb

@@ -16,7 +16,10 @@ group :assets do
   gem 'uglifier'
 end
 
+gem 'will_paginate', '3.0.pre2'
+
 gem 'jquery-rails'
+gem 'therubyracer'
 
 # Use unicorn as the web server
 # gem 'unicorn'
@@ -26,6 +29,10 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
+
+group :development, :test do
+  gem 'sqlite3'
+end
 
 group :test do
   # Pretty printed test output
