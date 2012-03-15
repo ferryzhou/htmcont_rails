@@ -183,7 +183,7 @@ class ContsController < ApplicationController
 
       @cont = Cont.new(
 	    :link => link,
-	    :html => html,
+	    :html => '', #html,
 	    :content => content,
 		:title => title,
 	    :error_type => error_type,
