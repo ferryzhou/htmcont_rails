@@ -1,9 +1,11 @@
 HtmcontRails::Application.routes.draw do
 
+  match 'g' => 'conts#g'
+  
   resources :conts do
     collection do
-	  get 'g'
-	end
+	    get 'g'
+	  end
   end
 
   resources :caches
