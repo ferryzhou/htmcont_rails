@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>Clean Read</title>
+    <script src="jquery-1.7.2.min.js" type="text/javascript"></script>
     <meta name="google-site-verification" content="BjTNKI3ekdyomymsSStIU_1LKz7VpFb9a1BmIXNjhZY" />
     <style type="text/css" media="screen">
       div.center { width: 500px; margin-left:auto; margin-right:auto; margin-top: 100px; }
@@ -9,14 +10,15 @@
       div#ext {margin-top:20px; margin-left:120px; }
       #linkbox { width: 400px; height: 20px}
     </style>
+    <script type="text/javascript">
+      function go() { window.location.href = "http://didaread.com/g?link=" + $("#linkbox").val(); }
+    </script>
   </head>
   <body>
     <div class="center">
       <div id="head">Clean the Page!</div>
-      <form name="input" action="/conts/g?" method="get">
-        <input id="linkbox" type="text" name="link" />
-        <input type="submit" value="Go!" />
-      </form>
+        <input id="linkbox" type="text" name="link" onkeydown="if (event.keyCode == 13) document.getElementById('gobutton').click()"/>
+        <input id="gobutton" type="button" value="Go!" onclick="go()"/>
       <div id="ext"><a href="https://chrome.google.com/webstore/detail/eeeoehhfllimkbilahhjakkdommkmanb">Download Extension</a></div>
     </div>
   </body>
