@@ -69,5 +69,18 @@ hr { margin-bottom:1.625em; }
 .note { font-family:Georgia, "Times New Roman", Times, serif; font-style:italic; font-size:0.9em; margin:0.1em; color:#333; } 
 .mono { font-family:"Courier New", Courier, monospace; }
 
-.main {  margin:0 auto;  width:600px;   }
+.main {  margin:0 auto;  width:600px; margin-top: 50px;  }
 .title { font-weight: bold; font-size: 20px; text-align:center; font-family:"ms song","Microsoft Yahei",SimHei,Verdana,Helvetica,SimSun,Arial,"Arial Unicode MS",MingLiu,PMingLiu,"MS Gothic",sans-serief; line-height: 1.5em; margin-top: 20px; margin-bottom: 20px}
+
+.navbar {
+position: fixed;
+top: 0;
+right: 0;
+left: 0;
+z-index: 1000;
+color: #555;
+-webkit-box-shadow: 0 2px 3px rgba(0,0,0,.25);
+box-shadow: 0 2px 3px rgba(0,0,0,.25);
+}
+
+.sharebuttons { width: 30%; float:right; vertical-align: center}
