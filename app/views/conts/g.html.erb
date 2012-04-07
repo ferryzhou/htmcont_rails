@@ -1,26 +1,32 @@
 
 <div id="navbar">
   <div id="left">
-    <a href="http://didaread.com">Home</a>
+    <a href="http://didaread.com">DidaRead</a>
   </div>
-  <div id="center">
-    Search Box
-  </div>
-
   <div id="right">
-  </div>
-
-</div>
-
-<div id="rightpanel">
 <!-- AddThis Button BEGIN -->
 <div class="addthis_toolbox addthis_default_style ">
-<a class="addthis_counter"></a>
+<a class="addthis_button_preferred_1"></a>
+<a class="addthis_button_preferred_2"></a>
+<a class="addthis_button_preferred_3"></a>
+<a class="addthis_button_preferred_4"></a>
+<a class="addthis_button_compact"></a>
+<a class="addthis_counter addthis_bubble_style"></a>
 </div>
 <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-4f613a6d7da22780"></script>
 <!-- AddThis Button END -->
+  </div>
+
+  <div id="center">
+     <input id="linkbox" type="text" name="link" style="width:400px" onkeydown="if (event.keyCode == 13) window.location.href = '/g?link=' + document.getElementById('linkbox').value;" value="Put a link here and read ..." onfocus="if (this.value == 'Put a link here and read ...') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Search ...';}"/>
+  </div>
+
 </div>
 
+<!--
+<div id="rightpanel">
+</div>
+-->
 <div class="main">
 
 <div class="title"><%= link_to @cont.title, @cont.link %></div>
