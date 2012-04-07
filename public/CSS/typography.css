@@ -78,8 +78,8 @@ hr { margin-bottom:1.625em; }
 }
 
 #navbar a { text-decoration: none;}
-#navbar #left {float:left; padding-left: 15px; width:150px;}
-#navbar #right {float: right; width: 150px; padding-right: 15px; padding-top: 5px;}
+#navbar #left {float:left; padding-left: 15px; width:140px;}
+#navbar #right {float: right; width: 140px; padding-right: 15px; padding-top: 5px;}
 #navbar #center {text-align: center;}
 
 #rightpanel {position: fixed; top:200; left:982px; display: block; z-index:1000; height: 300px; width: 100px; margin:0 auto;  }
