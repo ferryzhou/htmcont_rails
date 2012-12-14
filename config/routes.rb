@@ -6,6 +6,7 @@ HtmcontRails::Application.routes.draw do
     collection do
 	    get 'g'
 	    get 'clear'
+	    get 'delete_old'
 	  end
   end
 
