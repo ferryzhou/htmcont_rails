@@ -87,6 +87,14 @@ class ContsController < ApplicationController
     end
   end
   
+  def clear
+    Cont.destroy_all
+    respond_to do |format|
+      format.html { redirect_to conts_url }
+      format.json { head :no_content }
+    end
+  end
+  
   #==================== processing start =================>
   def get_charset(text)
     charset_str = 'charset='

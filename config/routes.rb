@@ -5,6 +5,7 @@ HtmcontRails::Application.routes.draw do
   resources :conts do
     collection do
 	    get 'g'
+	    get 'clear'
 	  end
   end
 
