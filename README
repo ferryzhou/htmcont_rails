@@ -13,7 +13,7 @@ error_type:
 
 == sample
 
-```ruby
+'''ruby
 require 'rubygems'
 require 'json'
 require 'net/http'
@@ -40,4 +40,4 @@ def htmcont(link)
    return result['content']
 end
 
-```
+'''
