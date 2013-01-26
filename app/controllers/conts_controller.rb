@@ -1,6 +1,6 @@
 require 'cgi'
 require 'open-uri'
-require 'readability.rb'
+require_relative 'readability.rb'
 #require 'iconv'
 
 class ContsController < ApplicationController
